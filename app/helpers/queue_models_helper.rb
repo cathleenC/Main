@@ -1,0 +1,2 @@
+module QueueModelsHelper
+end

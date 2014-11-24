@@ -1,0 +1,56 @@
+<%= form_for @queue_model, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :gps_lon, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :gps_lon, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :gps_lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :gps_lat, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :num_customer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_customer, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_customer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_customer, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :average_time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :average_time, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                queue_models_path, :class => 'btn' %>
+  </div>
+<% end %>

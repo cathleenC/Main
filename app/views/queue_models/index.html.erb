@@ -1,0 +1,50 @@
+<%- model_class = QueueModel -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:gps_lon) %></th>
+      <th><%= model_class.human_attribute_name(:gps_lat) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:num_customer) %></th>
+      <th><%= model_class.human_attribute_name(:last_customer) %></th>
+      <th><%= model_class.human_attribute_name(:average_time) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @queue_models.each do |queue_model| %>
+      <tr>
+        <td><%= link_to queue_model.id, queue_model_path(queue_model) %></td>
+        <td><%= queue_model.name %></td>
+        <td><%= queue_model.gps_lon %></td>
+        <td><%= queue_model.gps_lat %></td>
+        <td><%= queue_model.description %></td>
+        <td><%= queue_model.image %></td>
+        <td><%= queue_model.num_customer %></td>
+        <td><%= queue_model.last_customer %></td>
+        <td><%= queue_model.average_time %></td>
+        <td><%=l queue_model.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_queue_model_path(queue_model), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      queue_model_path(queue_model),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_queue_model_path,
+            :class => 'btn btn-primary' %>
