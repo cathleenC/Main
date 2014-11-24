@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 
+  number: 1
+  queue_model_id: 
+  start: 2014-11-24 13:13:42
+  end: 2014-11-24 13:13:42
+
+two:
+  user_id: 
+  number: 1
+  queue_model_id: 
+  start: 2014-11-24 13:13:42
+  end: 2014-11-24 13:13:42

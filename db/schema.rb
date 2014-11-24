@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124110841) do
+ActiveRecord::Schema.define(version: 20141124111341) do
+
+  create_table "bookings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "number"
+    t.integer  "queue_model_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["queue_model_id"], name: "index_bookings_on_queue_model_id"
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
 
   create_table "queue_models", force: true do |t|
     t.string   "name"
