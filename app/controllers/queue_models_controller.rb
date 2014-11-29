@@ -72,3 +72,36 @@ class QueueModelsController < ApplicationController
       params.require(:queue_model).permit(:name, :gps_lon, :gps_lat, :description, :image, :num_customer, :last_customer, :average_time)
     end
 end
+
+  # POST /queue_model/1/book.json
+  def book
+    # On crée un nouvel objet booking à partir des paramètres reçus
+    @booking = Booking.new(booking_params)
+    # On précise que cet object Booking dépend du show concerné
+    @booking.queue_model = @queue_model
+
+    respond_to do |format|
+      if @booking.save
+        format.json
+      else
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_queue_model
+      @queue_model = QueueModel.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def show_params
+      params.require(:queue_model).permit(:name, :gps_lat, :gps_lon, :image, :date)
+    end
+
+    # On ajoute les paramètres qu'on va envoyer avec le booking
+    def booking_params
+      params.require(:booking).permit(:user_id)
+    end
+end
