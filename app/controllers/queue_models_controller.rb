@@ -77,7 +77,7 @@ end
   def book
     # On crée un nouvel objet booking à partir des paramètres reçus
     @booking = Booking.new(booking_params)
-    # On précise que cet object Booking dépend du show concerné
+    # On précise que cet object Booking dépend de la queue concernée
     @booking.queue_model = @queue_model
 
     respond_to do |format|
